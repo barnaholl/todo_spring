@@ -36,7 +36,7 @@ public class TodoController {
         return SUCCESS;
    }
     @DeleteMapping("/todos/completed")
-    public String addTodo() {
+    public String removeCompleted() {
         List<Todo> todos= todoRepository.findAll();
         for (Todo todo : todos) {
             if(todo.getStatus()==Status.COMPLETE){
@@ -45,6 +45,28 @@ public class TodoController {
         }
         return SUCCESS;
     }
+
+    @PutMapping("/todos/toggle_all") //TODO:Check
+    public String toggleAll(){
+        List<Todo> todos= todoRepository.findAll();
+        for (Todo todo : todos) {
+            if(todo.getStatus()==Status.ACTIVE){
+                todo.setStatus(Status.COMPLETE);
+            }
+            else{
+                todo.setStatus(Status.ACTIVE);
+            }
+        }
+        return SUCCESS;
+
+    }
+    @DeleteMapping("/todos/{id}")
+    public String removeById(@PathVariable int id) {
+        todoRepository.delete(todoRepository.findById(id));
+        return SUCCESS;
+    }
+
+
 
 
 }
