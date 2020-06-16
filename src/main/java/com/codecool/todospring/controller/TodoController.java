@@ -66,6 +66,12 @@ public class TodoController {
         return SUCCESS;
     }
 
+    @PutMapping("/todos/{id}")
+    public String update(@RequestParam("id") int id, @RequestParam("todo-title") String title) {
+        todoRepository.findById(id).setTitle(title);
+        return SUCCESS;
+    }
+
 
 
 
