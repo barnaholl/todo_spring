@@ -35,6 +35,16 @@ public class TodoController {
         //todoHandler.addTodo(title);
         return SUCCESS;
    }
+    @DeleteMapping("/todos/completed")
+    public String addTodo() {
+        List<Todo> todos= todoRepository.findAll();
+        for (Todo todo : todos) {
+            if(todo.getStatus()==Status.COMPLETE){
+                todoRepository.delete(todo);
+            }
+        }
+        return SUCCESS;
+    }
 
 
 }
