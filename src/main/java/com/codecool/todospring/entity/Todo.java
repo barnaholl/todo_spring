@@ -18,7 +18,7 @@ public class Todo {
     @GeneratedValue
     private int id;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String title;
 
     @Column(nullable = false)
