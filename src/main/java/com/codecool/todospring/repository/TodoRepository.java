@@ -11,5 +11,8 @@ public interface TodoRepository extends JpaRepository<Todo,Integer> {
 
     Todo findById(int id);
 
+    Todo getById(int id);
+
+
 
 }

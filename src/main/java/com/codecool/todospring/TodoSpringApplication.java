@@ -31,6 +31,10 @@ public class TodoSpringApplication {
             todoRepository.save(todo1);
             todoRepository.save(todo2);
             todoRepository.save(todo3);
+
+            Todo todo=todoRepository.getById(1);
+            todo.setStatus(Status.COMPLETE);
+            todoRepository.save(todo);
         };
     }
 }
